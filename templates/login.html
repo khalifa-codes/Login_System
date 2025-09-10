@@ -1,0 +1,28 @@
+{%extends "main.html"%}
+{%block title%}login Page{%endblock%}
+
+{%block content%}
+ <div>
+    <h1>Login System</h1>
+    {%with messages = get_flashed_messages()%}
+    {%if messages%}
+    <div class="flashed_messages">
+        {%for msg in messages%}
+        <p class="flash_message {{category}}">{{msg}}</p>
+        {%endfor%}
+    </div>
+    {%endif%}
+    {%endwith%}
+    <form action="{{url_for('login')}}" method="post">
+        <label for="id">Student ID</label>
+        <input type="number" required name="id"  id="id" placeholder="Enter user ID" pattern="\d{5}" maxlength="5" title="Enter 5 digit ID" autocomplete="off" >
+        <br>
+        <label for="pass">Password</label>
+        <input type="password" required name="pwd"  id="pwd" placeholder="Enter user password" title="Enter user password" minlength="8" maxlength="10">
+        <br>
+        <button type="submit" name="login" value="login">Login</button>
+
+    </form>
+ </div>
+
+{%endblock%}

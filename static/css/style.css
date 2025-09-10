@@ -1,0 +1,212 @@
+/* ========== Global Reset ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+  overflow-x: hidden;
+}
+
+/* ========== Container ========== */
+div {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+  padding: 1.5rem;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  animation: fadeIn 1s ease forwards;
+  transition: transform 0.4s ease;
+}
+
+div:hover {
+  transform: translateY(-4px);
+}
+
+/* ========== Headings ========== */
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #eaf4f4;
+  letter-spacing: 1px;
+  animation: slideDown 1s ease;
+}
+
+/* ========== Forms ========== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+label {
+  text-align: left;
+  font-size: 0.8rem;
+  color: #cfd8dc;
+}
+
+input {
+  padding: 0.6rem;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+input:focus {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 10px #00f5d4, 0 0 20px #00f5d4;
+  transform: scale(1.02);
+}
+
+/* Remove number arrows */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* ========== Buttons ========== */
+button {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(135deg, #00f5d4, #00c897);
+  color: #0f2027;
+  transition: all 0.35s ease;
+  margin-top: 0.4rem;
+  transform-style: preserve-3d;
+}
+
+button:hover {
+  transform: scale(1.05) rotateX(6deg);
+  box-shadow: 0 8px 25px rgba(0, 245, 212, 0.4);
+}
+
+/* ========== Flash Messages ========== */
+.flashed_messages {
+  all: unset;
+  display: contents;
+}
+
+.flash_message {
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-block;
+  min-width: 200px;
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+
+  /* Animation sequence */
+  opacity: 0;
+  max-height: 0;
+  padding: 0;
+  margin: 0 auto;
+  overflow: hidden;
+
+  animation:
+      flashIn 0.5s ease forwards,
+      flashStay 3s linear 0.5s forwards,
+      flashOut 0.8s ease forwards 3.5s,
+      flashHide 0s linear 4.3s forwards;
+}
+
+/* ✅ Success */
+.flash_message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border-left: 5px solid #28a745;
+}
+
+/* ❌ Error */
+.flash_message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-left: 5px solid #dc3545;
+}
+
+/* ℹ️ Info */
+.flash_message.info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  border-left: 5px solid #17a2b8;
+}
+
+/* ⚠️ Warning */
+.flash_message.warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border-left: 5px solid #ffc107;
+}
+
+/* ========== Animations ========== */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes slideDown {
+  from {opacity: 0; transform: translateY(-20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* Flash sequence */
+@keyframes flashIn {
+  from { opacity: 0; max-height: 0; padding: 0; margin: 0; }
+  to { opacity: 1; max-height: 80px; padding: 10px 15px; margin: 6px auto; }
+}
+
+@keyframes flashStay {
+  from { opacity: 1; }
+  to { opacity: 1; }
+}
+
+@keyframes flashOut {
+  from { opacity: 1; max-height: 80px; padding: 10px 15px; margin: 6px auto; }
+  to { opacity: 0; max-height: 0; padding: 0; margin: 0 auto; }
+}
+
+/* 🔹 Final cleanup */
+@keyframes flashHide {
+  to { display: none; }
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 480px) {
+  div {
+      padding: 1.2rem;
+  }
+  h1 {
+      font-size: 1.2rem;
+  }
+  button {
+      font-size: 0.9rem;
+      padding: 0.65rem;
+  }
+}

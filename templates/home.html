@@ -1,0 +1,16 @@
+{%extends "main.html"%}
+{%block title%}Home Page{%endblock%}
+
+{%block content%}
+ <div>
+    <h1>Welcome to My website</h1>
+    <form action="/login" method="get">
+        <button type="submit" value="login">Have Account</button>
+    </form>
+    <br>
+    <form action="{{url_for('register')}}" method="get">
+        <button type="submit" value="register">Create one</button>
+    </form>
+ </div>
+
+{%endblock%}
